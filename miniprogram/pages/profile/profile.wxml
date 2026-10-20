@@ -1,0 +1,12 @@
+<view class="container">
+  <view class="eyebrow">我的空间</view>
+  <view class="title">很高兴遇见你</view>
+  <view class="subtitle">这里会随着我们的想法，一点一点变得丰富。</view>
+  <view class="card">
+    <view class="card-title">关于这里</view>
+    <view class="row"><text>当前版本</text><text class="muted">{{version}}</text></view>
+    <view class="row"><text>账号登录</text><text class="muted">暂不需要</text></view>
+    <button class="secondary" bindtap="showAbout">查看介绍</button>
+    <button class="primary" open-type="share">邀请好友体验</button>
+  </view>
+</view>

@@ -1,0 +1,12 @@
+page { background: #f5f7fb; color: #17233c; font-family: -apple-system, BlinkMacSystemFont, sans-serif; font-size: 30rpx; }
+.container { padding: 48rpx 32rpx; padding-bottom: calc(48rpx + env(safe-area-inset-bottom)); }
+.eyebrow { color: #2563eb; font-size: 24rpx; letter-spacing: 4rpx; }
+.title { font-size: 52rpx; font-weight: 700; margin: 20rpx 0; }
+.subtitle { color: #68748a; line-height: 1.8; }
+.card { background: #fff; border-radius: 28rpx; padding: 36rpx; margin-top: 32rpx; }
+.card-title { font-weight: 600; font-size: 34rpx; margin-bottom: 20rpx; }
+.primary { background: #2563eb; color: #fff; border-radius: 20rpx; margin-top: 32rpx; font-size: 30rpx; }
+.secondary { background: #edf3ff; color: #2563eb; border-radius: 20rpx; margin-top: 24rpx; font-size: 30rpx; }
+button::after { border: 0; }
+.row { display: flex; justify-content: space-between; padding: 22rpx 0; }
+.muted { color: #68748a; }

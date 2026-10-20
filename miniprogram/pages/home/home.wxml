@@ -1,0 +1,16 @@
+<view class="container">
+  <view class="eyebrow">一个新的开始</view>
+  <view class="title">你好，欢迎来玩</view>
+  <view class="subtitle">从一个小想法开始，把生活变得更有趣。</view>
+  <view class="card">
+    <view class="card-title">试试第一个互动</view>
+    <view class="subtitle" aria-live="polite">你已经点亮了 {{count}} 次灵感</view>
+    <button class="primary" bindtap="increment">点亮灵感 +1</button>
+  </view>
+  <view class="card">
+    <view class="card-title">好东西，一起分享</view>
+    <view class="subtitle">邀请朋友打开小程序，一起体验新的变化。</view>
+    <button class="secondary" open-type="share">分享给微信好友</button>
+    <button class="secondary" bindtap="openProfile">了解这个小程序</button>
+  </view>
+</view>

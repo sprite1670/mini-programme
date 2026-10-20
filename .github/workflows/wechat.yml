@@ -1,0 +1,59 @@
+name: WeChat
+on:
+  workflow_dispatch:
+    inputs:
+      action:
+        description: 'preview 生成预览码；upload 上传开发版（不审核、不发布）'
+        type: choice
+        options:
+          - preview
+          - upload
+        default: preview
+      version:
+        description: '版本号，例如 0.1.0'
+        required: true
+        default: '0.1.0'
+      description:
+        description: '本次更新说明'
+        default: '基础框架开发版'
+permissions:
+  contents: read
+concurrency:
+  group: wechat-upload
+  cancel-in-progress: false
+jobs:
+  wechat:
+    runs-on: ${{ vars.WX_RUNNER || 'ubuntu-latest' }}
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version-file: .nvmrc
+          cache: npm
+      - run: npm ci
+      - run: npm run validate
+      - name: WeChat preview
+        if: inputs.action == 'preview'
+        run: npm run wx:preview
+        env:
+          WX_APPID: ${{ secrets.WX_APPID }}
+          WX_PRIVATE_KEY: ${{ secrets.WX_PRIVATE_KEY }}
+          WX_VERSION: ${{ inputs.version }}
+          WX_DESCRIPTION: ${{ inputs.description }}
+      - name: WeChat upload
+        if: inputs.action == 'upload'
+        run: npm run wx:upload
+        env:
+          WX_APPID: ${{ secrets.WX_APPID }}
+          WX_PRIVATE_KEY: ${{ secrets.WX_PRIVATE_KEY }}
+          WX_VERSION: ${{ inputs.version }}
+          WX_DESCRIPTION: ${{ inputs.description }}
+      - name: Save preview QR code
+        if: inputs.action == 'preview' && success()
+        uses: actions/upload-artifact@v4
+        with:
+          name: wechat-preview
+          path: artifacts/preview.png
+          if-no-files-found: error
+          retention-days: 1
