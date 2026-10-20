@@ -1,9 +1,9 @@
 {
-  "description": "微信小程序基础框架",
+  "description": "留学家园 · 第一阶段",
   "miniprogramRoot": "miniprogram/",
   "compileType": "miniprogram",
   "appid": "touristappid",
-  "projectname": "mini-programme",
+  "projectname": "study-family",
   "setting": {
     "es6": true,
     "minified": true,
@@ -11,5 +11,7 @@
   },
   "packOptions": {
     "ignore": []
-  }
+  },
+  "cloudfunctionRoot": "cloudfunctions/",
+  "libVersion": "3.7.0"
 }

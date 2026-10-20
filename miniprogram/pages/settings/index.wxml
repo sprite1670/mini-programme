@@ -1,0 +1,7 @@
+<view class="container">
+ <view class="title">设置与数据管理</view>
+ <view wx:if="{{loading}}" class="card muted">正在加载设置…</view>
+ <view wx:if="{{error}}" class="error">{{error}}</view>
+ <view wx:if="{{family}}" class="card"><view class="card-title">家庭设置</view><view wx:if="{{!admin}}" class="subtitle">仅管理员可以修改名称和时区。</view><view class="label">家庭名称</view><input disabled="{{!admin}}" maxlength="40" value="{{name}}" bindinput="nameInput"/><view class="label">留学所在地时区</view><picker disabled="{{!admin}}" range="{{zoneLabels}}" value="{{zoneIndex}}" bindchange="zoneChange"><view class="picker">{{zoneLabels[zoneIndex]}} ▾</view></picker><button wx:if="{{admin}}" class="primary" loading="{{busy}}" disabled="{{busy}}" bindtap="save">保存家庭设置</button></view>
+ <view class="card"><view class="card-title">隐私与数据</view><view class="subtitle">仅在微信云开发中保存登录身份、你填写的称呼和家庭成员关系。首页时钟使用设备时间和 IANA 时区规则；未获取手机定位。家庭信息不提供公开分享、搜索或陌生人访问。</view><view class="subtitle">退出家庭会撤销访问权限，不会自动删除原家庭记录；管理员最后退出会归档家庭。本阶段不提供一键永久删除或数据导出，恢复和导出功能在第四阶段交付前不得用于存放敏感正式资料。</view><view class="muted small">如需账号删除，请联系本小程序管理员按部署文档处理。未来阶段新增资料或照片前须更新隐私说明。</view></view>
+</view>

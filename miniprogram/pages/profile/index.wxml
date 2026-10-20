@@ -1,0 +1,11 @@
+<view class="container">
+ <view class="title">我的家园</view>
+ <view wx:if="{{loading}}" class="card muted">正在加载…</view>
+ <view wx:if="{{error}}" class="error">{{error}}<button class="secondary" bindtap="refresh">重试</button></view>
+ <view wx:if="{{!user &amp;&amp; !loading &amp;&amp; !error}}" class="card">请先在首页登录。</view>
+ <block wx:if="{{user &amp;&amp; !loading}}">
+  <view class="card"><view class="card-title">家人怎么称呼你</view><input maxlength="24" value="{{displayName}}" bindinput="nameInput" placeholder="输入称呼，不必使用真实姓名"/><button class="primary" loading="{{busy}}" disabled="{{busy}}" bindtap="save">保存称呼</button></view>
+  <view class="card"><view class="card-title">{{family ? family.name : '尚未加入家庭'}}</view><button wx:if="{{family}}" class="secondary" bindtap="openMembers">家庭成员与邀请</button><button wx:else class="secondary" bindtap="openFamily">创建或加入家庭</button><button class="secondary" bindtap="openSettings">设置与数据管理</button><button class="secondary" bindtap="logout">退出本机登录</button><view class="muted small">退出本机登录不会退出家庭或删除云端账号。</view></view>
+ </block>
+ <view class="muted small">版本 {{version}} · 家庭内容不公开分享</view>
+</view>

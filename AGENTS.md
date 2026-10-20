@@ -1,9 +1,11 @@
-# 开发约定
+# 留学家园开发约定
 
-这是原生微信小程序，应用目录为 `miniprogram/`，不依赖 Web 服务或数据库。
-每个云任务已隔离，使用现有检出目录，不要创建额外 Git worktree。
-阅读 README.md 后开发，使用 Node.js 22 或 24，先 `npm ci`，提交前 `npm run validate`。
-不要提交上传私钥、环境文件、二维码产物或个人 project.private.config.json。
-AppID、微信私钥通过 GitHub Actions Secrets 配置，禁止向用户索要聊天中的密钥值。
-微信上传仅手动触发；正式提交审核和发布由账号管理员操作，不自动发布。
-Node 测试是逻辑与结构验证，不是微信编译器或真机验证；报告时明确区别。
+原生微信小程序在 miniprogram/，Node 云函数在 cloudfunctions/，依赖微信云开发。
+使用当前隔离检出目录，不创建额外 worktree。开始前阅读 README.md 和 docs/phase-1.md。
+Node.js 22/24 下 npm ci，提交前 npm run validate。
+共享云函数代码在 cloudfunctions/_shared/，改动后 npm run cloud:prepare；不要只改各函数生成的 lib/。
+云函数只使用可信 getWXContext().OPENID 确定身份，客户端 familyId/role/openid 都不可信。
+客户端禁止直接访问数据库、文件或分享家庭内容。跨家庭访问、并发邀请码消费必须有测试。
+实际密钥、project.private.config.json、云环境本地配置、二维码产物不提交。
+本阶段只完成身份、家庭、首页框架；二至四阶段等用户在微信工具验收后再做。
+本地 Node 测试不代表真实云端、微信编译或多账号真机通过。上传/审核/发布不可混称。

@@ -1,0 +1,23 @@
+<view class="container">
+  <view class="muted small">一家人在一起，远方也安心</view>
+  <view class="title">留学家园</view>
+  <view wx:if="{{loading}}" class="card muted">正在连接家庭空间…</view>
+  <view wx:if="{{error}}" class="error">{{error}}<button class="secondary" bindtap="refresh">重新检查</button></view>
+  <view wx:if="{{!signedIn}}" class="card">
+    <view class="card-title">欢迎回家</view>
+    <view class="subtitle">登录后将使用微信云端身份标识建立家庭账号。不获取微信昵称、头像、手机号或定位；你可以自己填写称呼。家庭资料不会公开分享。</view>
+    <button class="primary" loading="{{loading}}" disabled="{{loading}}" bindtap="login">登录并进入家庭</button>
+  </view>
+  <block wx:if="{{signedIn &amp;&amp; !loading &amp;&amp; !error}}">
+    <view wx:if="{{!family}}" class="card"><view class="card-title">建立你们的家庭空间</view><view class="subtitle">仅限 2–3 位亲近家人。创建家庭，或使用管理员给你的邀请码加入。</view><button class="primary" bindtap="openFamily">创建或加入家庭</button></view>
+    <view wx:else class="card">
+      <view class="card-title">{{family.name}}</view>
+      <view class="row"><text wx:for="{{family.members}}" wx:key="userId" class="pill">{{item.displayName}} · {{item.role === 'admin' ? '管理员' : item.role === 'student' ? '学生' : '家长'}}</text></view>
+      <button class="secondary" bindtap="openMembers">查看家庭成员</button>
+    </view>
+    <view class="card"><view class="card-title">两地时光</view><view class="label">北京时间</view><view class="subtitle">{{beijing}}</view><view class="label">{{family ? family.timezone : 'Pacific/Auckland'}} · 留学所在地</view><view class="subtitle">{{localTime}}</view><view class="muted small">基督城使用 Pacific/Auckland，自动遵循夏令时。</view></view>
+    <view class="card"><view class="card-title">未来 7 天日程</view><view class="empty">第一阶段尚未开放日程录入，第二阶段接入家庭共享日历。</view></view>
+    <view class="card"><view class="card-title">未完成任务</view><view class="empty">第一阶段尚未开放任务录入，第二阶段接入家庭待办与到期提示。</view></view>
+    <view class="card"><view class="card-title">家庭工具</view><button class="secondary" bindtap="upcoming">费用账本 · 第三阶段</button><button class="secondary" bindtap="upcoming">重要资料 · 第三阶段</button><button class="secondary" bindtap="upcoming">家庭动态 · 第三阶段</button></view>
+  </block>
+</view>

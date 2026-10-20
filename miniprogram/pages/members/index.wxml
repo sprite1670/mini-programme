@@ -1,0 +1,23 @@
+<view class="container">
+ <view class="title">家庭成员</view>
+ <view wx:if="{{loading}}" class="card muted">正在获取最新成员…</view>
+ <view wx:if="{{error}}" class="error">{{error}}<button class="secondary" bindtap="refresh">刷新状态</button></view>
+ <view wx:if="{{!family &amp;&amp; !loading &amp;&amp; !error}}" class="card">请先登录并加入家庭。</view>
+ <block wx:if="{{family}}">
+  <view class="subtitle">{{family.name}} · {{family.members.length}} / 3 人</view>
+  <view wx:for="{{family.members}}" wx:key="userId" class="card">
+   <view class="row"><text class="card-title">{{item.displayName}}</text><text class="pill">{{item.role === 'admin' ? '管理员' : item.role === 'student' ? '学生' : '家长'}}</text></view>
+   <block wx:if="{{admin &amp;&amp; item.role !== 'admin'}}">
+    <button class="secondary" disabled="{{busy}}" data-id="{{item.userId}}" data-role="{{item.role === 'parent' ? 'student' : 'parent'}}" bindtap="changeRole">设为{{item.role === 'parent' ? '学生' : '家长'}}</button>
+    <button class="danger" disabled="{{busy}}" data-id="{{item.userId}}" bindtap="remove">移除成员</button>
+   </block>
+  </view>
+  <view wx:if="{{admin}}" class="card">
+   <view class="card-title">邀请一位家人</view><view class="subtitle">24 小时有效，仅可成功使用一次。重新生成会使旧码失效；生成间隔至少 30 秒。请私下发送给家人。</view>
+   <button class="primary" loading="{{busy}}" disabled="{{busy || family.members.length >= 3}}" bindtap="invite">生成一次性邀请码</button>
+   <view wx:if="{{code}}"><view class="code">{{code}}</view><view class="muted small">失效时间（UTC）：{{expiresAt}}</view><button class="secondary" bindtap="copyCode">复制邀请码</button></view>
+   <button class="secondary" disabled="{{busy}}" bindtap="revoke">使当前邀请码失效</button>
+  </view>
+  <button class="danger" disabled="{{busy}}" bindtap="leave">{{admin ? '退出并归档家庭' : '退出家庭'}}</button>
+ </block>
+</view>

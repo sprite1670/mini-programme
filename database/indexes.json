@@ -1,0 +1,13 @@
+{
+  "note": "索引清单，不是自动部署配置。第一阶段只按 _id 事务访问，使用默认唯一索引。其他索引在对应业务阶段部署前创建。所有组合索引均为非唯一。",
+  "collections": {
+    "users": [],
+    "families": [],
+    "invitations": [{"fields": [{"name":"familyId","order":"asc"},{"name":"createdAt","order":"desc"}],"stage":4}],
+    "events": [{"fields":[{"name":"familyId","order":"asc"},{"name":"deletedAt","order":"asc"},{"name":"startAt","order":"asc"}],"stage":2}],
+    "tasks": [{"fields":[{"name":"familyId","order":"asc"},{"name":"deletedAt","order":"asc"},{"name":"dueAt","order":"asc"}],"stage":2}],
+    "expenses": [{"fields":[{"name":"familyId","order":"asc"},{"name":"deletedAt","order":"asc"},{"name":"month","order":"desc"},{"name":"category","order":"asc"}],"stage":3}],
+    "documents": [{"fields":[{"name":"familyId","order":"asc"},{"name":"deletedAt","order":"asc"},{"name":"visibility","order":"asc"},{"name":"createdBy","order":"asc"},{"name":"updatedAt","order":"desc"}],"stage":3}],
+    "posts": [{"fields":[{"name":"familyId","order":"asc"},{"name":"deletedAt","order":"asc"},{"name":"createdAt","order":"desc"}],"stage":3}]
+  }
+}

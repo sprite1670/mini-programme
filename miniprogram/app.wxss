@@ -1,12 +1,19 @@
-page { background: #f5f7fb; color: #17233c; font-family: -apple-system, BlinkMacSystemFont, sans-serif; font-size: 30rpx; }
-.container { padding: 48rpx 32rpx; padding-bottom: calc(48rpx + env(safe-area-inset-bottom)); }
-.eyebrow { color: #2563eb; font-size: 24rpx; letter-spacing: 4rpx; }
-.title { font-size: 52rpx; font-weight: 700; margin: 20rpx 0; }
-.subtitle { color: #68748a; line-height: 1.8; }
-.card { background: #fff; border-radius: 28rpx; padding: 36rpx; margin-top: 32rpx; }
-.card-title { font-weight: 600; font-size: 34rpx; margin-bottom: 20rpx; }
-.primary { background: #2563eb; color: #fff; border-radius: 20rpx; margin-top: 32rpx; font-size: 30rpx; }
-.secondary { background: #edf3ff; color: #2563eb; border-radius: 20rpx; margin-top: 24rpx; font-size: 30rpx; }
+page { background: #f4f8f7; color: #203c36; font-size: 16px; font-family: -apple-system, BlinkMacSystemFont, sans-serif; }
+.container { max-width: 900rpx; margin: auto; padding: 36rpx 30rpx; padding-bottom: calc(40rpx + env(safe-area-inset-bottom)); }
+.title { font-size: 48rpx; font-weight: 700; margin: 12rpx 0 20rpx; }
+.subtitle, .muted { color: #5c746d; line-height: 1.7; }
+.card { background: #fff; border-radius: 24rpx; padding: 30rpx; margin: 24rpx 0; border: 1rpx solid #e3eeea; }
+.card-title { font-size: 36rpx; font-weight: 600; margin-bottom: 20rpx; }
+button { min-height: 44px; line-height: 1.5; padding: 24rpx; margin-top: 20rpx; border-radius: 18rpx; font-size: 16px; }
 button::after { border: 0; }
-.row { display: flex; justify-content: space-between; padding: 22rpx 0; }
-.muted { color: #68748a; }
+.primary { color: white; background: #176e65; }
+.secondary { color: #176e65; background: #e9f4f0; }
+.danger { color: #a53c35; background: #fff1ee; }
+input, textarea, .picker { box-sizing: border-box; width: 100%; min-height: 44px; background: #f4f8f7; border-radius: 14rpx; padding: 24rpx; margin: 12rpx 0 24rpx; font-size: 16px; }
+.label { font-weight: 500; margin-top: 20rpx; }
+.row { display: flex; flex-wrap: wrap; justify-content: space-between; align-items: center; gap: 12rpx; margin: 18rpx 0; }
+.pill { background: #eef5f2; border-radius: 14rpx; padding: 10rpx 20rpx; font-size: 14px; }
+.error { background: #fff1ee; color: #9e342e; padding: 24rpx; border-radius: 16rpx; line-height: 1.7; }
+.empty { padding: 28rpx 0; color: #5c746d; line-height: 1.8; }
+.code { font-family: monospace; letter-spacing: 4rpx; font-size: 42rpx; overflow-wrap: anywhere; }
+.small { font-size: 14px; }

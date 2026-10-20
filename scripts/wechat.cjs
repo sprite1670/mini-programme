@@ -27,7 +27,7 @@ async function main() {
     if (action === 'preview') {
       const artifacts = path.resolve(__dirname, '../artifacts');
       fs.mkdirSync(artifacts, { recursive: true });
-      await ci.preview({ ...options, qrcodeFormat: 'image', qrcodeOutputDest: path.join(artifacts, 'preview.png'), pagePath: 'pages/home/home' });
+      await ci.preview({ ...options, qrcodeFormat: 'image', qrcodeOutputDest: path.join(artifacts, 'preview.png'), pagePath: 'pages/index/index' });
     } else {
       await ci.upload(options);
     }

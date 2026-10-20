@@ -1,29 +1,43 @@
 {
   "pages": [
-    "pages/home/home",
-    "pages/profile/profile"
+    "pages/index/index",
+    "pages/calendar/index",
+    "pages/tasks/index",
+    "pages/profile/index",
+    "pages/family/index",
+    "pages/members/index",
+    "pages/settings/index"
   ],
   "window": {
-    "navigationBarTitleText": "我的小程序",
-    "navigationBarBackgroundColor": "#f5f7fb",
+    "navigationBarTitleText": "留学家园",
+    "navigationBarBackgroundColor": "#f4f8f7",
     "navigationBarTextStyle": "black",
-    "backgroundColor": "#f5f7fb"
+    "backgroundColor": "#f4f8f7"
   },
   "tabBar": {
-    "color": "#68748a",
-    "selectedColor": "#2563eb",
+    "color": "#667d78",
+    "selectedColor": "#176e65",
     "backgroundColor": "#ffffff",
     "list": [
       {
-        "pagePath": "pages/home/home",
+        "pagePath": "pages/index/index",
         "text": "首页"
       },
       {
-        "pagePath": "pages/profile/profile",
+        "pagePath": "pages/calendar/index",
+        "text": "日程"
+      },
+      {
+        "pagePath": "pages/tasks/index",
+        "text": "待办"
+      },
+      {
+        "pagePath": "pages/profile/index",
         "text": "我的"
       }
     ]
   },
   "style": "v2",
-  "sitemapLocation": "sitemap.json"
+  "sitemapLocation": "sitemap.json",
+  "lazyCodeLoading": "requiredComponents"
 }

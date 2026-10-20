@@ -2,16 +2,17 @@
   "name": "mini-programme",
   "version": "0.1.0",
   "private": true,
-  "description": "手机 Codex 开发的原生微信小程序基础框架",
+  "description": "留学家园：家庭留学信息管理微信小程序（第一阶段）",
   "engines": {
     "node": ">=22 <25"
   },
   "scripts": {
-    "check": "node scripts/check.cjs",
+    "check": "node scripts/prepare-cloud.cjs --check && node scripts/check.cjs",
     "test": "node --test",
     "validate": "npm run check && npm test",
     "wx:preview": "node scripts/wechat.cjs preview",
-    "wx:upload": "node scripts/wechat.cjs upload"
+    "wx:upload": "node scripts/wechat.cjs upload",
+    "cloud:prepare": "node scripts/prepare-cloud.cjs"
   },
   "devDependencies": {
     "miniprogram-ci": "2.1.31"
