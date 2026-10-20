@@ -2,6 +2,7 @@ const fs = require('node:fs');
 const path = require('node:path');
 const vm = require('node:vm');
 const assert = require('node:assert/strict');
+const { checkExpressions } = require('./wxml-expressions.cjs');
 const root = path.resolve(__dirname, '..');
 function json(file) { return JSON.parse(fs.readFileSync(path.join(root, file), 'utf8')); }
 const project = json('project.config.json');
@@ -33,6 +34,7 @@ walk(root);
 for (const page of app.pages) {
   const source = fs.readFileSync(path.join(root, base, page + '.js'), 'utf8');
   const template = fs.readFileSync(path.join(root, base, page + '.wxml'), 'utf8');
+  checkExpressions(template, page + '.wxml');
   for (const match of template.matchAll(/(?:bind|catch)(?::)?[a-z]+="([A-Za-z][A-Za-z0-9]*)"/g)) {
     assert.ok(new RegExp('\\b' + match[1] + '\\s*\\(').test(source), `Missing handler ${page}: ${match[1]}`);
   }

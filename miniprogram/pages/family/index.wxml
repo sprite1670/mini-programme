@@ -2,9 +2,9 @@
  <view class="title">连接一家人</view>
  <view wx:if="{{loading}}" class="card muted">正在检查家庭状态…</view>
  <view wx:if="{{error}}" class="error">{{error}}</view>
- <view wx:if="{{!loading &amp;&amp; !ready}}" class="card">请先返回首页登录。</view>
+ <view wx:if="{{!loading && !ready}}" class="card">请先返回首页登录。</view>
  <view wx:if="{{bound}}" class="card">你已经加入一个家庭，请返回首页查看。</view>
- <block wx:if="{{ready &amp;&amp; !bound}}">
+ <block wx:if="{{ready && !bound}}">
   <view class="card"><view class="card-title">创建家庭</view><view class="label">家庭名称</view><input maxlength="40" value="{{name}}" bindinput="nameInput" placeholder="例如：我们的留学小家"/><view class="label">留学所在地时区</view><picker range="{{zoneLabels}}" value="{{zoneIndex}}" bindchange="zoneChange"><view class="picker">{{zoneLabels[zoneIndex]}} ▾</view></picker><button class="primary" loading="{{busy}}" disabled="{{busy}}" bindtap="create">创建家庭并成为管理员</button></view>
   <view class="card"><view class="card-title">我有邀请码</view><view class="subtitle">邀请码有效期 24 小时，仅能成功使用一次。不要公开发布。</view><input maxlength="12" value="{{code}}" bindinput="codeInput" placeholder="输入 12 位邀请码"/><view class="label">我的家庭角色</view><picker range="{{roles}}" value="{{roleIndex}}" bindchange="roleChange"><view class="picker">{{roles[roleIndex]}} ▾</view></picker><button class="secondary" loading="{{busy}}" disabled="{{busy}}" bindtap="join">加入家庭</button></view>
  </block>

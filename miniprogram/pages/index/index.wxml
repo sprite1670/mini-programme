@@ -8,7 +8,7 @@
     <view class="subtitle">登录后将使用微信云端身份标识建立家庭账号。不获取微信昵称、头像、手机号或定位；你可以自己填写称呼。家庭资料不会公开分享。</view>
     <button class="primary" loading="{{loading}}" disabled="{{loading}}" bindtap="login">登录并进入家庭</button>
   </view>
-  <block wx:if="{{signedIn &amp;&amp; !loading &amp;&amp; !error}}">
+  <block wx:if="{{signedIn && !loading && !error}}">
     <view wx:if="{{!family}}" class="card"><view class="card-title">建立你们的家庭空间</view><view class="subtitle">仅限 2–3 位亲近家人。创建家庭，或使用管理员给你的邀请码加入。</view><button class="primary" bindtap="openFamily">创建或加入家庭</button></view>
     <view wx:else class="card">
       <view class="card-title">{{family.name}}</view>
